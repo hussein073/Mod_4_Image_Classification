@@ -102,3 +102,9 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+# for Mac Finder
+.DS_Store
+
+# Yolo3 datafile
+yolov3.weights
