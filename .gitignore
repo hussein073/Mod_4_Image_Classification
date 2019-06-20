@@ -106,5 +106,5 @@ venv.bak/
 # for Mac Finder
 .DS_Store
 
-# Yolo3 datafile
+# yolo3 data file
 yolov3.weights
