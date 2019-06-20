@@ -103,7 +103,7 @@ venv.bak/
 # mypy
 .mypy_cache/
 
-# for OSX finder
+# for Mac Finder
 .DS_Store
 
 # yolo3 data file
