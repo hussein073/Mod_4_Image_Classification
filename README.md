@@ -59,6 +59,31 @@ Following are the command line arguments include:
 
 Our args variable is a dictionary containing the key-value pairs values. 
 
+After we load our class labels and set random colors for each. 
+To load YOLO from disk, we’ll take advantage of OpenCV’s DNN function called cv2.dnn.readNetFromDarknet . This function requires both a configPath  and weightsPath  which are established via dictionary.
+
+Let’s load the image and send it through the network:
+* Load the input image  and extract its dimensions.
+* Determine the output layer names from the YOLO model.
+
+Once our blob is prepared, we’ll
+* Perform a forward pass through our YOLO network
+* Show the inference time for YOLO
+
+For bounding box lists include:
+* Boxes : Our bounding boxes around the object.
+* Confidences : The confidence value that YOLO assigns to an object. Lower confidence values indicate that the object might not be what the network thinks it is. Remember from our command line arguments above that we’ll filter out objects that don’t meet the 0.5  threshold.
+* ClassIDs : The detected object’s class label.
+YOLO does not apply non-maxima suppression for us, so we need to explicitly apply it.
+
+Applying non-maxima suppression suppresses significantly overlapping bounding boxes, keeping only the most confident ones.
+
+NMS also ensures that we do not have any redundant or extraneous bounding boxes.
+
+Taking advantage of OpenCV’s built-in DNN module implementation of NMS, we perform non-maxima suppression. All that is required is that we submit our bounding boxes , confidences , as well as both our confidence threshold and NMS threshold.
+Then, we simply draw the bounding box and text on image  using our random class colors.
+Finally, we display our resulting image until the user presses any key on their keyboard (ensuring the window opened by OpenCV is selected and focused).
+
 **YOLO object detection in video streams**
 
 <img class="size-full" src="https://s3-us-west-2.amazonaws.com/static.pyimagesearch.com/opencv-yolo/yolo_overpass_output.gif" width="600">
